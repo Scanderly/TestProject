@@ -1,0 +1,9 @@
+﻿@using TestProject.Models
+@model List<MenuList>
+
+@foreach (MenuList menu in Model)
+{
+    <li>
+        <a href="@menu.Link">@menu.Name</a>
+    </li>
+}

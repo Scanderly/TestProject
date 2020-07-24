@@ -1,0 +1,18 @@
+﻿@using TestProject.Models
+@{ 
+    User user = Session["User"] as User;
+}
+
+    
+
+
+@if (user != null)
+{
+    <a class="info btn btn-info" href="#" role="button">Çıxış</a>
+}
+else
+{
+    <a class="info btn btn-info" href="@Url.Action("login","login")" role="button">Daxil ol</a>
+}
+
+

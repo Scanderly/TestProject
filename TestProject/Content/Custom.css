@@ -1,0 +1,42 @@
+﻿body {
+}
+body {
+    box-sizing: border-box;
+}
+
+.menu {
+    list-style-type: none;
+    text-decoration: none;
+}
+
+    .menu li {
+        display: inline;
+        margin-right: 50px;
+    }
+
+.container {
+    height: 600px;
+    width: auto;
+}
+
+.header {
+    height: 80px;
+    width: auto;
+    background-color: skyblue;
+}
+
+.row {
+    height: 50px;
+    width: 1500px;
+    position: absolute;
+    left: 181px;
+    top: 20px;
+}
+
+.info {
+    float: left;
+    position: absolute;
+    right: -158px;
+    top: 3px;
+    text-decoration: none;
+}
