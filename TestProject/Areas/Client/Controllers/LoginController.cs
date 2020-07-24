@@ -17,48 +17,46 @@ namespace TestProject.Areas.Client.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login(string email, string password)
+        public ActionResult Login(User usr)
         {
            
-            if (email == null || password == null)
+            if (usr.Email == null || usr.Password == null)
             {
                  Session["LogError"] = "This field required";
             }
            using(TestProjectEntities db=new TestProjectEntities())
             {
-                User user = db.Users.FirstOrDefault(u => u.Email == email);
-                if (user != null&& Crypto.VerifyHashedPassword(user.Password, password))
+                User user = db.Users.FirstOrDefault(u => u.Email == usr.Email);
+                if (user!=null)
                 {
-                    if (user.IsBlocked == true)
+                    if (user.IsBlocked == false)
                     {
+                        if (Crypto.VerifyHashedPassword(user.Password, usr.Password))
+                        {
+                            user.ErrosCount = 0;
+                            if (user.IsAdmin == false)
+                            {
+                                return RedirectToAction("index", "profile", new { Area = "Client" });
+                            }
+                            return RedirectToAction("index", "dashboard", new { Area = "Admin" });
+                        }
+                        Session["LoginError"] = "The email or password is not valid";
+                        user.ErrosCount++;
+                        db.SaveChanges();
 
-                        return RedirectToAction("register", "login");
+                        if (user.ErrosCount ==3)
+                        {
+                            user.IsBlocked = true;
+                            user.ErrosCount = 0;
+                            db.SaveChanges();
+                            return RedirectToAction("register", "login");
+                        }
+                        return View();
                     }
-                    user.ErrorCount = 0;
-                    if (user.IsAdmin == false)
-                    {
-                        return RedirectToAction("index", "profile", new { Area = "Client" });
-                    }
-                    return RedirectToAction("index", "dashboard", new { Area = "Admin" });
-                  
-                }
-                
-                Session["LoginError"] = "The email or password is not valid";
-                Session.Timeout = 1;
-                //int error = user.ErrorCount;
-                user.ErrorCount++;
-                db.SaveChanges();
-
-                if (user.ErrorCount == 3)
-                {
-                    user.IsBlocked = true;
-                    user.ErrorCount = 0;
-                    db.SaveChanges();
                     return RedirectToAction("register", "login");
                 }
+                return RedirectToAction("register", "login");
             }
-            
-            return View();
         }
         [HttpGet]
         public ActionResult Register()
@@ -88,13 +86,13 @@ namespace TestProject.Areas.Client.Controllers
                     IsAdmin = false,
                     IsBlocked = false,
                     RegistrateDate = DateTime.Now,
-                    LastLoggetDate = DateTime.Now
+                    LastLoginDate = DateTime.Now
                 };
                 Session["Register"] = true;
                 db.Users.Add(usr);
                 db.SaveChanges();
             }
-            return View();
+            return RedirectToAction("index","profile");
         }
 
         public ActionResult LogOut()
