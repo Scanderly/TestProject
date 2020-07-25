@@ -12,9 +12,9 @@ namespace TestProject.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class MenuList
+    public partial class Menu
     {
-        public System.Guid Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Link { get; set; }
     }

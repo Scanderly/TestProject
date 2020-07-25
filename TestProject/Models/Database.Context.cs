@@ -25,7 +25,7 @@ namespace TestProject.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<MenuList> MenuLists { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Menu> Menus { get; set; }
     }
 }

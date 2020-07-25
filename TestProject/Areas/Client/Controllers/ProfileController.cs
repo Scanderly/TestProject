@@ -16,10 +16,10 @@ namespace TestProject.Areas.Client.Controllers
         }
         public PartialViewResult DisplayMenu()
         {
-            List<MenuList> menulist = new List<MenuList>();
+            List<Menu> menulist = new List<Menu>();
             using (TestProjectEntities db = new TestProjectEntities())
             {
-                menulist = db.MenuLists.ToList();
+                menulist = db.Menus.ToList();
             }
             return PartialView(menulist);
         }

@@ -40,3 +40,44 @@ body {
     top: 3px;
     text-decoration: none;
 }
+a {
+    color: #333;
+    text-decoration: none;
+    FONT-SIZE: large;
+}
+ul.editnav {
+    position: absolute;
+    top: 20px;
+    text-decoration: none;
+    list-style-type: none;
+}
+.navhead {
+    position: absolute;
+    top: 80px;
+    left: 10px;
+    width: 300px;
+    height: 500px;
+    border:solid 1px;
+    border-color:aqua;
+}
+.editnav li {
+    margin-bottom: 20px;
+}
+.menuform {
+    position: absolute;
+    top: 100px;
+    height: 200px;
+    left: 384px;
+}
+table {
+   
+    width: 495px;
+}
+table td{
+    font-weight:700;
+}
+footer {
+    position: fixed;
+    bottom: 5px;
+    left: 63px;
+}

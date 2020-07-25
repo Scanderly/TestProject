@@ -17,9 +17,7 @@
                         @Html.Action("DisplayMenu")
                     </ul>
                 </div>
-               
-
-                @Html.Partial("~/Areas/Client/Views/Shared/_ButtonText.cshtml")
+                @Html.Partial("~/Areas/Admin/Views/Shared/_ButtonText.cshtml")
             </div>
 
         </div>
@@ -27,12 +25,12 @@
         <div class="container body-content">
             @RenderBody()
         </div>
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - TestProject</p>
-        </footer>
     </div>
-        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-        <script src="~/Scripts/bootstrap.min.js"></script>
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - TestProject</p>
+    </footer>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>

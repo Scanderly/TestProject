@@ -1,7 +1,44 @@
-﻿
+﻿@using TestProject.Models
+@model List<Menu>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Menus";
+    int c=0;
+    c++;
 }
 
-<h2>Index</h2>
+<h2>Menyular</h2>
+<div class="menuform">
+    <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Link</td>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach(Menu menu in Model) {
+            <tr>
+                <td>
+                     @c @menu.Name 
+                </td>
+                <td>
+                    @menu.Link
+                </td>
+                <td>
+                    <a href="@Url.Action("update","edit",new{id=menu.Id})">Update</a>
+                </td>
+                <td>
+                    <a href="@Url.Action("delete","edit",new{id=menu.Id})">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <div>
+        <a href="@Url.Action("create","edit")">
+            Add New Menu
+        </a>
+    </div>
+</div>
 

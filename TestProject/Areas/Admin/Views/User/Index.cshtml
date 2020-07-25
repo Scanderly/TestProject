@@ -1,7 +1,66 @@
-﻿
+﻿@using TestProject.Models
+@model List<User>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Users";
+
 }
 
-<h2>Index</h2>
+<h2>Menyular</h2>
+<div class="menuform">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>State</th>
+                    <th>Registrated Date</th>
+                    <th>LastLogintime</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (User user in Model)
+                {
+                <tr>
+                    <td>
+                        @user.Name
+                    </td>
+                    <td>
+                        @user.Surname
+                    </td>
+                    <td>
+                        @user.Email
+                    </td>
+                    <td>
+                        @user.IsAdmin
+                    </td>
+                    <td>
+                        @user.IsBlocked
+                    </td>
+                    <td>
+                        @user.RegistrateDate
+                    </td>
+                    <td>
+                        @user.LastLoginDate
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-success" href="@Url.Action("unblock","user",new{id=user.Id})">UnBlock</button>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-danger" href="@Url.Action("block","user",new{id=user.Id})">Block</button>
+                    </td>
+                    <td>
+                        <a class="btn btn-info" href="@Url.Action("update","user",new{id=user.Id})">Update</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+    
+</div>
 
