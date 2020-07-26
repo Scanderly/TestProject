@@ -1,20 +1,28 @@
-﻿@using TestProject.Areas.Client.Data
-@model List<Wheather>
-
+﻿
+@using TestProject.Areas.Client.Wheatheritems
+@model List<Weatherinfo>
 @{
     ViewBag.Title = "Homepage";
 }
 
-<h2>TestApi</h2>
 
-@*<div>
-    <ul>
-        @foreach (Wheather whet in Model)
+<div class="menuform">
+    <ul class="menu">
+        @foreach (Weatherinfo weatherinfo in Model)
         {
-            <li>
-                <a>@cat.Title</a>
-            </li>
+            <li>@weatherinfo.Name</li>
+            <li>Atmosfer təzyiqi: @weatherinfo.main.pressure Ph</li>
+            <li>Nəmişlik: @weatherinfo.main.humidity %</li>
+            <li>Temperatur: @weatherinfo.main.temp </li>
+
         }
     </ul>
+</div>
+<div>
+    <div class="addSlide">
+        <a class="slide" href="#">
+            <i class="fa fa-times-circle"></i>
+        </a>
 
-</div>*@
+    </div>
+</div>

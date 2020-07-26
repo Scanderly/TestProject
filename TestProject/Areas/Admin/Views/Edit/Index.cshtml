@@ -29,7 +29,7 @@
                     <a href="@Url.Action("update","edit",new{id=menu.Id})">Update</a>
                 </td>
                 <td>
-                    <a href="@Url.Action("delete","edit",new{id=menu.Id})">Delete</a>
+                    <a onclick="return confirm('Are you sure?')" href="@Url.Action("delete","edit",new{id=menu.Id})">Delete</a>
                 </td>
             </tr>
             }

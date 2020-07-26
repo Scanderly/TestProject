@@ -1,11 +1,13 @@
 ﻿@using TestProject.Models
 @model List<User>
 @{
+    
     ViewBag.Title = "Users";
 
+   
 }
 
-<h2>Menyular</h2>
+    <h2>Users</h2>
 <div class="menuform">
     <div class="table-responsive">
         <table class="table">
@@ -47,10 +49,11 @@
                         @user.LastLoginDate
                     </td>
                     <td>
-                        <button type="submit" class="btn btn-success" href="@Url.Action("unblock","user",new{id=user.Id})">UnBlock</button>
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-danger" href="@Url.Action("block","user",new{id=user.Id})">Block</button>
+                        @if (user.IsBlocked == true)
+                        {
+                            <a  class="btn btn-danger"  href="#">Blocked</a>
+                        }
+
                     </td>
                     <td>
                         <a class="btn btn-info" href="@Url.Action("update","user",new{id=user.Id})">Update</a>

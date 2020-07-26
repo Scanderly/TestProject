@@ -1,9 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@using TestProject.Models
+@{ 
+    User user = Session["User"] as User;
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - TestProject</title>
     <link href="~/Content/Custom.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
@@ -12,8 +16,12 @@
     <div class="header">
         <div class="row">
             <div class="col col-md-10">
-
-                @Html.Partial("~/Areas/Client/Views/Shared/_ButtonText.cshtml")
+                <div class="menubox">
+                    <ul class="menu">
+                        @Html.Action("DisplayMenu")
+                    </ul>
+                </div>
+                @Html.Partial("~/Areas/Admin/Views/Shared/_ButtonText.cshtml")
             </div>
 
         </div>
@@ -28,6 +36,11 @@
                     <li>
                         <a href="@Url.Action("index","edit")">
                             Edit Menu
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("index","slide")">
+                            Edit Adpanel
                         </a>
                     </li>
                 </ul>

@@ -27,5 +27,6 @@ namespace TestProject.Models
     
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
+        public virtual DbSet<AdPanel> AdPanels { get; set; }
     }
 }

@@ -5,8 +5,12 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using TestProject.Models;
-using TestProject.Areas.Client.Data;
 using RestSharp;
+using System.Net;
+using System.IO;
+using Newtonsoft.Json;
+using TestProject.Areas.Client.Wheatheritems;
+
 
 namespace TestProject.Areas.Client.Controllers
 {
@@ -15,7 +19,20 @@ namespace TestProject.Areas.Client.Controllers
         // GET: Client/Home
         public ActionResult Index()
         {
-            return View();
+            //using(TestProjectEntities db=new TestProjectEntities())
+            //{
+            //    AdText adText = new AdText()
+            //    {
+            //        Text=db.AdPanels.
+            //    }
+            //}
+
+            //Weatherinfo weather = new Weatherinfo();
+            string link = string.Format("https://samples.openweathermap.org/data/2.5/weather");
+            var client = new RestClient(link);
+            var request = new RestRequest("?q=London&mode=json&units=metric&appid=439d4b804bc8187953eb36d2a8c26a02", Method.GET);
+            List<Weatherinfo> wheathers = client.Execute<List<Weatherinfo>>(request).Data;
+            return View(wheathers);
         }
         public PartialViewResult DisplayMenu()
         {
@@ -26,13 +43,6 @@ namespace TestProject.Areas.Client.Controllers
             }
             return PartialView(menulist);
         }
-        public ActionResult TestApi()
-        {
-            int a = 1;
-            var client = new RestClient("http://samples.openweathermap.org/data/2.5/box/city?bbox=12,32,15,37,10&appid=439d4b804bc8187953eb36d2a8c26a02");
-            var request = new RestRequest($"posts/token={a}", Method.GET);
-            List<Wheather> cats = client.Execute<List<Wheather>>(request).Data;
-            return View(cats);
-        }
+       
     }
 }

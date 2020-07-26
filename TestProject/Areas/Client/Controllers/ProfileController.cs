@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TestProject.Filters;
 using TestProject.Models;
 
 namespace TestProject.Areas.Client.Controllers
 {
+    [UserLevel]
     public class ProfileController : Controller
     {
         // GET: Client/Profile

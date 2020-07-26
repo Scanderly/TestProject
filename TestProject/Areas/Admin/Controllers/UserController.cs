@@ -1,84 +1,94 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using TestProject.Filters;
 using TestProject.Models;
 
 namespace TestProject.Areas.Admin.Controllers
 {
+    //[AdminLevel]
     public class UserController : Controller
     {
         // GET: Admin/User
         public ActionResult Index()
         {
-            List<User> menus = new List<User>();
+       
+            List<User> users = new List<User>();
             using (TestProjectEntities db = new TestProjectEntities())
             {
-                menus = db.Users.OrderByDescending(m => m.Id).ToList();
+                users = db.Users.OrderBy(m => m.Id).ToList();
+                
             }
-            return View(menus);
+            return View(users);
         }
-        [HttpGet]
-        public ActionResult Create()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Create(User user)
-        {
-            //using (TestProjectEntities db = new TestProjectEntities())
-            //{
-            //    User menu1 = db.Menus.FirstOrDefault(m => m.Name == menu.Name && m.Link == menu.Link);
-            //    if (menu1 != null)
-            //    {
-            //        ModelState.AddModelError("AddError", "This menu already exist");
-            //        return View();
-            //    }
-            //    menu1 = new Menu()
-            //    {
-            //        Name = menu.Name,
-            //        Link = menu.Link
-            //    };
-            //    db.Menus.Add(menu1);
-            //    db.SaveChanges();
+        //[HttpGet]
+        //public ActionResult ChangeState()
+        //{
+        //    return View();
+        //}
 
-            //}
-            return RedirectToAction("index", "dashboard");
-        }
+        //[HttpPost]
+        //public ActionResult ChangeState(int?id )
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpNotFoundResult();
+        //    }
+        //    using(TestProjectEntities db=new TestProjectEntities())
+        //    {
+        //        User user = db.Users.Find(id);
+        //        if (user != null)
+        //        {
+        //            if (user.IsBlocked == true)
+        //            {
+        //                user.IsBlocked = false;
+        //            }
+        //            user.IsBlocked = true;
+        //        }
+        //        db.SaveChanges();
+        //    }
+           
+        //    return RedirectToAction("index", "user");
+        //}
+      
         [HttpGet]
         public ActionResult Update()
         {
+            
             return View();
         }
         [HttpPost]
-        public ActionResult Update(int? id)
+        public ActionResult Update([Bind(Include = "Id,Name,Surname,IsAdmin,Email,IsBlocked")]User user)
         {
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            //using (TestProjectEntities db = new TestProjectEntities())
-            //{
-            //    Menu menu = db.Menus.Find(id);
-            //    db.Entry(menu).State = EntityState.Modified;
-            //    db.SaveChanges();
-            //}
+            if (user == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            using (TestProjectEntities db = new TestProjectEntities())
+            {
+                User usr = db.Users.Find(user.Id);
+                usr.Name = user.Name;
+                usr.Email = user.Email;
+                usr.Surname = user.Surname;
+                usr.IsAdmin = user.IsAdmin;
+                usr.IsBlocked = user.IsBlocked;
+                db.SaveChanges();
+            }
             return RedirectToAction("index");
         }
-        public ActionResult Delete(int? id)
+        public PartialViewResult DisplayMenu()
         {
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            //using (TestProjectEntities db = new TestProjectEntities())
-            //{
-            //    Menu menu = db.Menus.Find(id);
-            //    db.Menus.Remove(menu);
-            //    db.SaveChanges();
-            //}
-            return RedirectToAction("index", "edit");
+            List<Menu> menulist = new List<Menu>();
+            using (TestProjectEntities db = new TestProjectEntities())
+            {
+                menulist = db.Menus.ToList();
+            }
+            return PartialView(menulist);
         }
+
     }
 }

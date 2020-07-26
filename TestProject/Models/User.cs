@@ -21,8 +21,8 @@ namespace TestProject.Models
         public string Password { get; set; }
         public bool IsAdmin { get; set; }
         public bool IsBlocked { get; set; }
-        public System.DateTime RegistrateDate { get; set; }
-        public System.DateTime LastLoginDate { get; set; }
+        public Nullable<System.DateTime> RegistrateDate { get; set; }
+        public Nullable<System.DateTime> LastLoginDate { get; set; }
         public short ErrosCount { get; set; }
     }
 }

@@ -34,6 +34,9 @@ namespace TestProject.Areas.Client.Controllers
                         if (Crypto.VerifyHashedPassword(user.Password, usr.Password))
                         {
                             user.ErrosCount = 0;
+                            HttpContext.Session["Login"] = true;
+                            HttpContext.Session["User"] = user;
+                            user.LastLoginDate = DateTime.Now;
                             if (user.IsAdmin == false)
                             {
                                 return RedirectToAction("index", "profile", new { Area = "Client" });
@@ -49,10 +52,12 @@ namespace TestProject.Areas.Client.Controllers
                             user.IsBlocked = true;
                             user.ErrosCount = 0;
                             db.SaveChanges();
-                            return RedirectToAction("register", "login");
+                            return Content("Your account is blocked, please contact adminstrator");
                         }
+                        
                         return View();
                     }
+                    ModelState.AddModelError(string.Empty, "This email is not exist");
                     return RedirectToAction("register", "login");
                 }
                 return RedirectToAction("register", "login");
@@ -94,10 +99,12 @@ namespace TestProject.Areas.Client.Controllers
             }
             return RedirectToAction("index","profile");
         }
-
+       
         public ActionResult LogOut()
         {
-            return View();
+            Session["User"] = null;
+
+            return RedirectToAction("index","home",new {Area="Client" });
         }
     }
     

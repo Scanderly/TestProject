@@ -6,7 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="8a5aa105899e4011b08dc531fb544b0a" Name="Diagram1">
         <EntityTypeShape EntityType="TestProjectModel.User" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TestProjectModel.Menu" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TestProjectModel.Menu" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="TestProjectModel.AdPanel" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

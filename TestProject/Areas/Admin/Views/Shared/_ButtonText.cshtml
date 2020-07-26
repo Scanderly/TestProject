@@ -8,7 +8,7 @@
 
 @if (user != null)
 {
-    <a class="info btn btn-info" href="#" role="button">Çıxış</a>
+    <a class="info btn btn-danger" href="@Url.Action("logout","login", new {Area="client" })" role="button">Çıxış</a>
 }
 else
 {

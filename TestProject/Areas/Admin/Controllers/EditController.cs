@@ -5,10 +5,12 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using TestProject.Filters;
 using TestProject.Models;
 
 namespace TestProject.Areas.Admin.Controllers
 {
+    //[AdminLevel]
     public class EditController : Controller
     {
         // GET: Admin/Edit
@@ -17,7 +19,7 @@ namespace TestProject.Areas.Admin.Controllers
             List<Menu> menus = new List<Menu>();
            using(TestProjectEntities db=new TestProjectEntities())
             {
-                 menus= db.Menus.OrderByDescending(m => m.Id).ToList();
+                 menus= db.Menus.OrderBy(m => m.Id).ToList();
             }
             return View(menus);
         }
@@ -31,7 +33,7 @@ namespace TestProject.Areas.Admin.Controllers
         {
             using(TestProjectEntities db =new TestProjectEntities())
             {
-                Menu menu1 = db.Menus.FirstOrDefault(m =>m.Name == menu.Name && m.Link == menu.Link);
+                Menu menu1 = db.Menus.FirstOrDefault(m =>m.Id==menu.Id&&m.Name == menu.Name && m.Link == menu.Link);
                 if (menu1 != null)
                 {
                     ModelState.AddModelError("AddError", "This menu already exist");
@@ -54,16 +56,18 @@ namespace TestProject.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Update(int?id)
+        public ActionResult Update(Menu menu)
         {
-            if (id == null)
+            if (menu == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             using (TestProjectEntities db = new TestProjectEntities())
             {
-                Menu menu = db.Menus.Find(id);
-                db.Entry(menu).State = EntityState.Modified;
+                Menu edited = db.Menus.Find(menu.Id);
+                edited.Id = menu.Id;
+                edited.Name = menu.Name;
+                edited.Link = menu.Link;
                 db.SaveChanges();
             }
             return RedirectToAction("index");
@@ -81,6 +85,15 @@ namespace TestProject.Areas.Admin.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("index","edit");
+        }
+        public PartialViewResult DisplayMenu()
+        {
+            List<Menu> menulist = new List<Menu>();
+            using (TestProjectEntities db = new TestProjectEntities())
+            {
+                menulist = db.Menus.ToList();
+            }
+            return PartialView(menulist);
         }
     }
 }

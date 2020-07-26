@@ -81,3 +81,11 @@ footer {
     bottom: 5px;
     left: 63px;
 }
+.addSlide {
+    background-color: yellowgreen;
+    width: 352px;
+    height: 500px;
+    position: fixed;
+    top: 100px;
+    right: 0;
+}
