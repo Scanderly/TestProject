@@ -4,10 +4,12 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using TestProject.Filters;
 using TestProject.Models;
 
 namespace TestProject.Areas.Admin.Controllers
 {
+    [AdminLevel]
     public class SlideController : Controller
     {
         //GET: Admin/Slide

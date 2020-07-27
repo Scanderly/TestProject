@@ -1,5 +1,5 @@
 ﻿@using TestProject.Models
-@{ 
+@{
     User user = Session["User"] as User;
 }
 <!DOCTYPE html>
@@ -10,51 +10,55 @@
     <title>@ViewBag.Title - TestProject</title>
     <link href="~/Content/Custom.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
 </head>
 <body>
-    <div class="header">
-        <div class="row">
-            <div class="col col-md-10">
-                <div class="menubox">
+    <div class="container-fluid">
+        <div class="header">
+            <div class="row">
+                <div class="col col-md-7">
                     <ul class="menu">
                         @Html.Action("DisplayMenu")
                     </ul>
                 </div>
-                @Html.Partial("~/Areas/Admin/Views/Shared/_ButtonText.cshtml")
+                <div class="col col-md-4">
+                    <a class="info btn btn-danger" href="@Url.Action("logout","login",new {Area="" })" role="button">Çıxış</a>
+                </div>
             </div>
-
-        </div>
-        <div class="navhead">
-            <div class="col-lg-10">
-                <ul class="editnav">
-                    <li>
-                        <a href="@Url.Action("index","user")">
-                            Edit User
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("index","edit")">
-                            Edit Menu
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("index","slide")">
-                            Edit Adpanel
-                        </a>
-                    </li>
-                </ul>
+            <div class="navhead">
+                <div class="col-lg-10">
+                    <ul class="editnav">
+                        <li>
+                            <a href="@Url.Action("index","user")">
+                                Edit User
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("index","edit")">
+                                Edit Menu
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("index","slide")">
+                                Edit Adpanel
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container body-content">
+                @RenderBody()
             </div>
         </div>
-        <div class="container body-content">
-            @RenderBody()
-        </div>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - TestProject</p>
+        </footer>
     </div>
-    <hr />
-    <footer>
-        <p>&copy; @DateTime.Now.Year - TestProject</p>
-    </footer>
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/custom.js"></script>
 </body>
 </html>

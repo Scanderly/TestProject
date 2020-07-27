@@ -96,15 +96,16 @@ namespace TestProject.Areas.Client.Controllers
                 Session["Register"] = true;
                 db.Users.Add(usr);
                 db.SaveChanges();
+                return RedirectToAction("login");
             }
-            return RedirectToAction("index","profile");
+            
         }
        
         public ActionResult LogOut()
         {
             Session["User"] = null;
 
-            return RedirectToAction("index","home",new {Area="Client" });
+            return RedirectToAction("index","home",new {Area="" });
         }
     }
     

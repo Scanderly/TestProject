@@ -10,7 +10,7 @@ using TestProject.Models;
 
 namespace TestProject.Areas.Admin.Controllers
 {
-    //[AdminLevel]
+    [AdminLevel]
     public class EditController : Controller
     {
         // GET: Admin/Edit

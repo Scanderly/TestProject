@@ -2,12 +2,11 @@
 @model List<Menu>
 @{
     ViewBag.Title = "Menus";
-    int c=0;
-    c++;
+   
 }
 
-<h2>Menyular</h2>
 <div class="menuform">
+    <h2>Menyular</h2>
     <table>
         <thead>
             <tr>
@@ -17,21 +16,22 @@
         </thead>
         <tbody>
 
-            @foreach(Menu menu in Model) {
-            <tr>
-                <td>
-                     @c @menu.Name 
-                </td>
-                <td>
-                    @menu.Link
-                </td>
-                <td>
-                    <a href="@Url.Action("update","edit",new{id=menu.Id})">Update</a>
-                </td>
-                <td>
-                    <a onclick="return confirm('Are you sure?')" href="@Url.Action("delete","edit",new{id=menu.Id})">Delete</a>
-                </td>
-            </tr>
+            @foreach (Menu menu in Model)
+            {
+                <tr>
+                    <td>
+                       @menu.Name
+                    </td>
+                    <td>
+                        @menu.Link
+                    </td>
+                    <td>
+                        <a href="@Url.Action("update","edit",new{id=menu.Id})">Update</a>
+                    </td>
+                    <td>
+                        <a onclick="return confirm('Are you sure?')" href="@Url.Action("delete","edit",new{id=menu.Id})">Delete</a>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>

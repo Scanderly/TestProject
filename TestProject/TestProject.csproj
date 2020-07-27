@@ -129,9 +129,9 @@
     <Content Include="Areas\Admin\Views\Edit\Create.cshtml" />
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <Content Include="Areas\Client\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Client\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Client\Views\Login\Login.cshtml" />
-    <Content Include="Areas\Client\Views\Login\Register.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
     <EntityDeploy Include="Models\Database.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Database.Designer.cs</LastGenOutput>
@@ -139,15 +139,12 @@
     <Content Include="Models\Database.edmx.diagram">
       <DependentUpon>Database.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Client\Views\Shared\_ButtonText.cshtml" />
-    <Content Include="Areas\Client\Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Areas\Client\Views\Shared\DisplayMenu.cshtml" />
     <Content Include="Areas\Client\Views\Profile\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_ButtonText.cshtml" />
     <Content Include="Areas\Admin\Views\Edit\Update.cshtml" />
     <Content Include="Areas\Admin\Views\Edit\Index.cshtml" />
     <Content Include="Areas\Admin\Views\User\Update.cshtml" />
-    <Content Include="Areas\Admin\Views\User\ChangeState.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\DisplayMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\Create.cshtml" />
@@ -271,8 +268,8 @@
     <Compile Include="Areas\Client\Wheatheritems\Main.cs" />
     <Compile Include="Areas\Client\Wheatheritems\Weatherinfo.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
-    <Compile Include="Areas\Client\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Client\Controllers\LoginController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Areas\Client\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Client\Wheatheritems\Wind.cs" />
     <Compile Include="Filters\AdminLevel.cs" />
@@ -328,6 +325,9 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\DisplayMenu.cshtml" />
+    <Content Include="Views\Shared\_ButtonText.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -7,63 +7,64 @@
    
 }
 
-    <h2>Users</h2>
-<div class="menuform">
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Surname</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>State</th>
-                    <th>Registrated Date</th>
-                    <th>LastLogintime</th>
+    
+    <div class="menuform">
+        <h2>Users</h2>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>State</th>
+                        <th>Registrated Date</th>
+                        <th>LastLogintime</th>
 
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (User user in Model)
-                {
-                <tr>
-                    <td>
-                        @user.Name
-                    </td>
-                    <td>
-                        @user.Surname
-                    </td>
-                    <td>
-                        @user.Email
-                    </td>
-                    <td>
-                        @user.IsAdmin
-                    </td>
-                    <td>
-                        @user.IsBlocked
-                    </td>
-                    <td>
-                        @user.RegistrateDate
-                    </td>
-                    <td>
-                        @user.LastLoginDate
-                    </td>
-                    <td>
-                        @if (user.IsBlocked == true)
-                        {
-                            <a  class="btn btn-danger"  href="#">Blocked</a>
-                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (User user in Model)
+                    {
+                        <tr>
+                            <td>
+                                @user.Name
+                            </td>
+                            <td>
+                                @user.Surname
+                            </td>
+                            <td>
+                                @user.Email
+                            </td>
+                            <td>
+                                @user.IsAdmin
+                            </td>
+                            <td>
+                                @user.IsBlocked
+                            </td>
+                            <td>
+                                @user.RegistrateDate
+                            </td>
+                            <td>
+                                @user.LastLoginDate
+                            </td>
+                            <td>
+                                @if (user.IsBlocked == true)
+                                {
+                                    <a class="btn btn-danger" href="#">Blocked</a>
+                                }
 
-                    </td>
-                    <td>
-                        <a class="btn btn-info" href="@Url.Action("update","user",new{id=user.Id})">Update</a>
-                    </td>
-                </tr>
-                }
-            </tbody>
-        </table>
+                            </td>
+                            <td>
+                                <a class="btn btn-info" href="@Url.Action("update","user",new{id=user.Id})">Update</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
 
     </div>
-    
-</div>
 

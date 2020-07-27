@@ -13,7 +13,7 @@ namespace TestProject.Filters
         {
             if (HttpContext.Current.Session["Login"] == null)
             {
-                filterContext.Result = new RedirectResult("~/client/home");
+                filterContext.Result = new RedirectResult("~/home");
                 return;
             }
 

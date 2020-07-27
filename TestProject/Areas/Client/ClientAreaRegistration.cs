@@ -17,7 +17,7 @@ namespace TestProject.Areas.Client
             context.MapRoute(
                 "Client_default",
                 "Client/{controller}/{action}/{id}",
-                new { controller="Home",action = "Index", id = UrlParameter.Optional },
+                new { controller="profile",action = "Index", id = UrlParameter.Optional },
                 new[]{"TestProject.Areas.Client.Controllers"}
             );
         }

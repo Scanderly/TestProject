@@ -5,55 +5,56 @@
     ViewBag.Title = "Update";
 }
 
-<h2>Update</h2>
-
-<div class="menuform">
-    <form method="post" action="@Url.Action("update", "user")">
-        <div class="form-group">
-            <div class="col-md-10">
-                <label for="Name">Name</label>
-                <input type="text" name="Name" id="name" value="@ViewBag.Name" class="form-control" />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-10">
-                <label for="Surname">Surname</label>
-                <input type="text" name="Surname" id="Surname" value="" class="form-control" />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-10">
-                <label for="Email">Email</label>
-                <input type="text" name="Email" id="Email" value="" class="form-control" />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-10">
-                <h3>Role</h3>
-                <label for="true">Admin</label>
-                <input type="radio" name="IsAdmin" id="Admin" value="true" class="form-control" />
-                <label for="false">User</label>
-                <input type="radio" name="IsAdmin" id="User" value="false" class="form-control" />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-10">
-                <h3>State</h3>
-                <label for="true">Block</label>
-                <input type="radio" name="IsBlocked" id="Block" value="true" class="form-control" />
-                <label for="false">Unblock</label>
-                <input type="radio" name="IsBlocked" id="UnBlocked" value="false" class="form-control" />
-            </div>
-        </div>
-        <div class="form-group ">
-            <div class="col-md-4 ">
-                <input type="submit" class="btn btn-info" id="UpdateInfo" value="Update" />
-            </div>
-        </div>
-        <div class="row">
-            <a href="@Url.Action("index","user")">Back To List</a>
-        </div>
-    </form>
 
 
-</div>
+    <div class="menuform">
+        <h2>Update</h2>
+        <form method="post" action="@Url.Action("update", "user")">
+            <div class="form-group">
+                <div class="col-md-10">
+                    <label for="Name">Name</label>
+                    <input type="text" name="Name" id="name" value="@ViewBag.Name" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <label for="Surname">Surname</label>
+                    <input type="text" name="Surname" id="Surname" value="" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <label for="Email">Email</label>
+                    <input type="text" name="Email" id="Email" value="" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <h3>Role</h3>
+                    <label for="true">Admin</label>
+                    <input type="radio" name="IsAdmin" id="Admin" value="true" class="form-control" />
+                    <label for="false">User</label>
+                    <input type="radio" name="IsAdmin" id="User" value="false" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <h3>State</h3>
+                    <label for="true">Block</label>
+                    <input type="radio" name="IsBlocked" id="Block" value="true" class="form-control" />
+                    <label for="false">Unblock</label>
+                    <input type="radio" name="IsBlocked" id="UnBlocked" value="false" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-md-4 ">
+                    <input type="submit" class="btn btn-info" id="UpdateInfo" value="Update" />
+                </div>
+            </div>
+            <div class="row">
+                <a href="@Url.Action("index","user")">Back To List</a>
+            </div>
+        </form>
+
+
+    </div>

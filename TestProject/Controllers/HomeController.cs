@@ -19,18 +19,18 @@ namespace TestProject.Areas.Client.Controllers
         // GET: Client/Home
         public ActionResult Index()
         {
-            //using(TestProjectEntities db=new TestProjectEntities())
-            //{
-            //    AdText adText = new AdText()
-            //    {
-            //        Text=db.AdPanels.
-            //    }
-            //}
+            using (TestProjectEntities db = new TestProjectEntities())
+            {
+
+                AdPanel ad = new AdPanel();
+                //AdText adText=db.AdPanels.Single(a=>a.Text==ad.Text)
+               
+            }
 
             //Weatherinfo weather = new Weatherinfo();
             string link = string.Format("https://samples.openweathermap.org/data/2.5/weather");
             var client = new RestClient(link);
-            var request = new RestRequest("?q=London&mode=json&units=metric&appid=439d4b804bc8187953eb36d2a8c26a02", Method.GET);
+            var request = new RestRequest("?q=London&appid=439d4b804bc8187953eb36d2a8c26a02", Method.GET);
             List<Weatherinfo> wheathers = client.Execute<List<Weatherinfo>>(request).Data;
             return View(wheathers);
         }

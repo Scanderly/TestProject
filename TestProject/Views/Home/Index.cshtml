@@ -1,7 +1,14 @@
 ﻿
 @using TestProject.Areas.Client.Wheatheritems
+@using TestProject.Models
 @model List<Weatherinfo>
 @{
+    using (TestProjectEntities db = new TestProjectEntities())
+    {
+        AdPanel ad = new AdPanel(id);
+        ad=db.AdPanels
+    }
+    
     ViewBag.Title = "Homepage";
 }
 
@@ -20,7 +27,7 @@
 </div>
 <div>
     <div class="addSlide">
-        <a class="slide" href="#">
+        <a href="#"class="slide">@
             <i class="fa fa-times-circle"></i>
         </a>
 

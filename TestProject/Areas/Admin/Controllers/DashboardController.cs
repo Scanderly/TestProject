@@ -9,7 +9,7 @@ using TestProject.Models;
 
 namespace TestProject.Areas.Admin.Controllers
 {
-    //[AdminLevel]
+    [AdminLevel]
     public class DashboardController : Controller
     {
         // GET: Admin/Dashboard

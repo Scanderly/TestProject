@@ -1,7 +1,8 @@
-﻿$(document).ready(function () {
+﻿$(document).ready(function (){
     var slide = $(".addSlide")
     $(".slide").click(function () {
-        //slide.fadeIn(2000);
-        Console.lo
+        slide.slideUp(500).css("opacity",0.8)
+
+        
     })
 });

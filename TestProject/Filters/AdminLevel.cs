@@ -13,14 +13,14 @@ namespace TestProject.Filters
         {
             if (HttpContext.Current.Session["Login"] == null)
             {
-                filterContext.Result = new RedirectResult("~/client/home");
+                filterContext.Result = new RedirectResult("~/home");
                 return;
             }
 
             User user = HttpContext.Current.Session["User"] as User;
-            if (user.IsAdmin == true)
+            if (user.IsAdmin == false)
             {
-                filterContext.Result = new RedirectResult("~/admin");
+                filterContext.Result = new RedirectResult("~/client");
                 return;
             }
 

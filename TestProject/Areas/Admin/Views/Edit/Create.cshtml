@@ -4,33 +4,34 @@
 
 }
 
-<h2>Edit User</h2>
-<div class="menuform">
-    <form method="post" action="@Url.Action("create","edit")">
 
-        <div class="form-group">
-            <div class="col-md-8">
-                <label for="Name">Name</label>
-                <input type="text" name="Name" id="name" class="form-control" />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-8">
-                <label for="Link">Link</label>
-                <input type="text" name="Link" id="Link" class="form-control" />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-4">
-                <input type="submit" class="btn btn-info" value="Add" />
-            </div>
-        </div>
-        <label for="validate-class" class="danger">This menu already exist</label>
-        <div>
-            <a href="@Url.Action("index","edit")">
-                Back To List
-            </a>
-        </div>
-    </form>
+    <div class="menuform">
+        <h2>Add Menu</h2>
+        <form method="post" action="@Url.Action("create","edit")">
 
-</div>
+            <div class="form-group">
+                <div class="col-md-8">
+                    <label for="Name">Name</label>
+                    <input type="text" name="Name" id="name" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-8">
+                    <label for="Link">Link</label>
+                    <input type="text" name="Link" id="Link" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4">
+                    <input type="submit" class="btn btn-info" value="Add" />
+                </div>
+            </div>
+            <label for="validate-class" class="danger">This menu already exist</label>
+            <div>
+                <a href="@Url.Action("index","edit")">
+                    Back To List
+                </a>
+            </div>
+        </form>
+
+    </div>
