@@ -89,3 +89,17 @@ footer {
     top: 100px;
     right: 0;
 }
+.slide p{
+    text-align:center
+}
+i.fa.fa-times-circle {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+p {
+    text-align: center;
+    padding-top: 163px;
+    font-size: 23px;
+    color: #20afbe;
+}

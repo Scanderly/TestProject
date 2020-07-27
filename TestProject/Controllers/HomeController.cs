@@ -21,10 +21,12 @@ namespace TestProject.Areas.Client.Controllers
         {
             using (TestProjectEntities db = new TestProjectEntities())
             {
+                List<AdPanel> ads = db.AdPanels.ToList();
+                AdPanel ad = ads[ads.Count - 1];
+                AdText text = new AdText();
+                text.Text = ad.Text;
+                ViewBag.Text = text.Text;
 
-                AdPanel ad = new AdPanel();
-                //AdText adText=db.AdPanels.Single(a=>a.Text==ad.Text)
-               
             }
 
             //Weatherinfo weather = new Weatherinfo();
